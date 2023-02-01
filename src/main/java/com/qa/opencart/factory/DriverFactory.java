@@ -50,23 +50,62 @@ public class DriverFactory {
 	public Properties initProperties()
 	{
 		propertiesObj = new Properties();
-		try {
-			// FileInputStream will create connection with the properties file.
-			FileInputStream fis = new FileInputStream("E:\\SeleniumProject2023\\practice\\src\\test\\resources\\config\\config.properties"); 
-			// E:\SeleniumProject2023\practice\src\test\resources\config\config.properties
-			// /practice/src/test/resources/config/config.properties
-			propertiesObj.load(fis); // load() will bind the data to propertiesObj Object.
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-			
-		}
+		FileInputStream fis = null;
+
+		// mvn clean install -Denv="qa"
+		// mvn clean install
 		
-		return propertiesObj;
+		String envName = System.getProperty("env");
+		System.out.println("-----> Running test cases on environment----> " + envName);
+		
+		
+		if (envName == null) {
+			System.out.println("No env is given...hence running it on default QA env....");
+			try {
+				fis = new FileInputStream("E:\\SeleniumProject2023\\Git-Jenkins-Grid-AWS-Project\\src\\test\\resources\\config\\config.properties");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		 else {
+
+				try {
+					switch (envName.toLowerCase()) {
+					case "qa":
+						fis = new FileInputStream("./src/test/resources/config/qa.config.properties");
+						break;
+					case "dev":
+						fis = new FileInputStream("./src/test/resources/config/dev.config.properties");
+						break;
+					case "stage":
+						fis = new FileInputStream("./src/test/resources/config/stage.config.properties");
+						break;
+					case "uat":
+						fis = new FileInputStream("./src/test/resources/config/uat.config.properties");
+						break;
+					case "prod":
+						fis = new FileInputStream("./src/test/resources/config/config.properties");
+						break;
+
+					default:
+						System.out.println("Please pass the right env name...." + envName);
+						break;
+					}
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+			try {
+				propertiesObj.load(fis);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			return propertiesObj;
+		
+		
 	}
 	
 	
