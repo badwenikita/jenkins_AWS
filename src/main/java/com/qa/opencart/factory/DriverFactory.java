@@ -20,6 +20,10 @@ public class DriverFactory {
 	
 	public WebDriver initializeBrowser(Properties prop)
 	{
+		
+		// System.getProperty(key) is used to read the key from commandline. command :  mvn clean install -Dbrowser="chrome"
+		// String browserName = System.getProperty("browser");
+		
 		String browserName = prop.getProperty("browser").trim();
 		System.out.println("Browser name : "+browserName);
 		optionsManagerObj = new OptionsManager(prop);
