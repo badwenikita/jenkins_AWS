@@ -67,14 +67,17 @@
 						<useSystemClassLoader>false</useSystemClassLoader>
 						<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
 						
+					
+						<!-- This Updation is done for Video posted on 23 Jan 2023 : -->
+						<!-- passing ${suiteXmlFiles} from pipeline script-->
 						<suiteXmlFiles>
-							<suiteXmlFile>E:\SeleniumProject2023\Git-Jenkins-Grid-AWS-Project\src\test\resources\Test Runners\testng.xml</suiteXmlFile>
+							<suiteXmlFile>${suiteXmlFiles}</suiteXmlFile>
 						</suiteXmlFiles>
 						
 						<!-- 
 						<argLine>
-                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                		</argLine>
+                   			 -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                				</argLine>
 						-->
                 		
 					</configuration>
