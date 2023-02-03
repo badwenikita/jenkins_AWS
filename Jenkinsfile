@@ -11,7 +11,7 @@ pipeline
         stage('Build') 
         {
             steps{
-                echo("deploy to qa")
+                echo("Build project")
             }
             
         }
