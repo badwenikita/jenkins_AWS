@@ -27,7 +27,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/badwenikita/jenkins_AWS.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/Test Runners/testng_regression.xml"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/Test Runners/testng_regression.xml"
                     
                 }
             }
@@ -57,7 +57,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/badwenikita/jenkins_AWS.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/Test Runners/testng_sanity.xml"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/Test Runners/testng_sanity.xml"
                     
                 }
             }
