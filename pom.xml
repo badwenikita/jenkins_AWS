@@ -70,8 +70,15 @@
 					
 						<!-- This Updation is done for Video posted on 23 Jan 2023 : -->
 						<!-- passing ${suiteXmlFiles} from pipeline script-->
+						<!--
 						<suiteXmlFiles>
 							<suiteXmlFile>${suiteXmlFiles}</suiteXmlFile>
+						</suiteXmlFiles>
+						-->
+						
+						<!-- pom.xml is used for executing TCs in local Workspace and in jenkins server. Not for pipeline -->
+						<suiteXmlFiles>
+							<suiteXmlFile>src/test/resources/Test Runners/testng.xml</suiteXmlFile>
 						</suiteXmlFiles>
 						
 						<!-- 
